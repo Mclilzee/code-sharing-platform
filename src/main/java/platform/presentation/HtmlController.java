@@ -19,7 +19,7 @@ public class HtmlController {
     }
 
     @GetMapping("/api/code")
-    public CodeInformation getJson() {
+    public CodeInformation getCodeInformation() {
         return platform;
     }
 }
