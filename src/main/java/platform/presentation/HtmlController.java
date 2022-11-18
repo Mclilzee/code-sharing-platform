@@ -30,6 +30,10 @@ public class HtmlController {
         return "snippet";
     }
 
+    @GetMapping("/api/code/new")
+    public String getNewCodeForm() {
+        return "newSnippet";
+    }
     @ResponseBody
     @GetMapping("/api/code")
     public CodeInformation getCodeInformation() {

@@ -5,8 +5,8 @@
     </head>
     <body>
     <form>
-        <textarea id="code_snippet"></textarea>
-        <input type="submit" onclick="send()">Submit</button>
+        <textarea name="code" id="code_snippet"></textarea>
+        <input type="submit" onclick="send()" value="Submit">
     </form>
     </body>
 </html>
