@@ -1,15 +1,14 @@
 package platform.presentation;
 
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import platform.business.CodeInformation;
 
 import javax.validation.Valid;
 
-@RestController
+@Controller
 public class HtmlController {
 
     CodeInformation codeInformation = new CodeInformation("""
@@ -21,11 +20,14 @@ public class HtmlController {
     public void addCodeInformation(@RequestBody @Valid CodeInformation codeInformation) {
         this.codeInformation = codeInformation;
     }
-    @GetMapping(value = "/code", produces = MediaType.TEXT_HTML_VALUE)
-    public String getHtml() {
-        return codeInformation.getHtml();
+
+    @GetMapping("/code")
+    public String getHtml(Model model) {
+        model.addAttribute("code", codeInformation);
+        return "snippet";
     }
 
+    @ResponseBody
     @GetMapping("/api/code")
     public CodeInformation getCodeInformation() {
         return codeInformation;
