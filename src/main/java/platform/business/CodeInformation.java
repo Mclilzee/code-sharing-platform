@@ -24,23 +24,4 @@ public class CodeInformation {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         return this.date.format(formatter);
     }
-
-    @JsonIgnore
-    public String getHtml() {
-        return """
-                <html>
-                    <header>
-                        <title>Code</title>
-                    </header>
-                    <body>
-                        <pre>
-                            %s
-                        </pre>
-                    </body>
-                </html>
-                """.formatted(this.code);
-    }
-
-
-
 }
