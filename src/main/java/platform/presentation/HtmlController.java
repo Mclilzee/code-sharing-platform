@@ -29,7 +29,7 @@ public class HtmlController {
 
     @GetMapping("/code/new")
     public String getNewCodeForm() {
-        return "newSnippet";
+        return "new-snippet";
     }
 
     @ResponseBody
