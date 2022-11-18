@@ -2,10 +2,7 @@ package platform.presentation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import platform.business.CodeInformation;
 
 import javax.validation.Valid;
@@ -34,6 +31,13 @@ public class HtmlController {
     public String getNewCodeForm() {
         return "newSnippet";
     }
+
+    @ResponseBody
+    @PostMapping(value = "/api/code/new", params = {"code"})
+    public void submitNewCodeForm(@RequestParam String code) {
+       addCodeInformation(new CodeInformation(code));
+    }
+
     @ResponseBody
     @GetMapping("/api/code")
     public CodeInformation getCodeInformation() {

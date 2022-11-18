@@ -1,12 +1,13 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Create</title>
     </head>
     <body>
-    <form>
+    <form method="post">
         <textarea name="code" id="code_snippet"></textarea>
-        <input type="submit" onclick="send()" value="Submit">
+        <input type="submit" value="Submit">
     </form>
     </body>
 </html>
