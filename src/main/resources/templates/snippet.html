@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmln:th="http://www.thymeleaf.org">
+    <head>
+        <title>Code</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <span id="load_date" th:text=${code.getDate()}></span>
+        <pre id="code_snippet" th:text=${code.getCode()}></pre>
+    </body>
+</html>

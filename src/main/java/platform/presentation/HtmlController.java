@@ -27,7 +27,7 @@ public class HtmlController {
         return "snippet";
     }
 
-    @GetMapping("/api/code/new")
+    @GetMapping("/code/new")
     public String getNewCodeForm() {
         return "newSnippet";
     }

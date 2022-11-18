@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Create</title>
+        <script src="static/js/index.js"/>
     </head>
     <body>
     <form method="post">
