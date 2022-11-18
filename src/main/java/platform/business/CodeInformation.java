@@ -1,5 +1,6 @@
 package platform.business;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 
@@ -13,6 +14,7 @@ public class CodeInformation {
 
     private final LocalDateTime date;
 
+    @JsonCreator
     public CodeInformation(String code) {
         this.code = code;
         this.date = LocalDateTime.now();
