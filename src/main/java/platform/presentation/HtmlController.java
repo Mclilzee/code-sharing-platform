@@ -16,6 +16,7 @@ public class HtmlController {
                 SpringApplication.run(CodeSharingPlatform.class, args);
             }""");
 
+    @ResponseBody
     @PostMapping("/api/code/new")
     public void addCodeInformation(@RequestBody @Valid CodeInformation codeInformation) {
         this.codeInformation = codeInformation;
