@@ -38,7 +38,7 @@ public class CodeController {
 
     @GetMapping("/code/new")
     public String getNewCodeForm() {
-        return "new-snippet";
+        return "new-snippet-form";
     }
 
     @ResponseBody

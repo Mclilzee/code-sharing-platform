@@ -4,10 +4,13 @@
         <meta charset="UTF-8">
         <title>Create</title>
         <script th:src="@{/js/new-snippet.js}" defer></script>
+        <link rel="stylesheet" th:href="@{/css/styles.css}">
     </head>
     <body>
     <form>
         <textarea name="code" id="code_snippet"></textarea>
+        <label>Time restriction: <input type="number"></label>
+        <label>Views restriction: <input type="number"></label>
         <input type="submit" value="Submit">
     </form>
     </body>
