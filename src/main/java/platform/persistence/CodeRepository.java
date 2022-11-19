@@ -1,11 +1,12 @@
-package platform.business;
+package platform.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import platform.business.Code;
 
 import java.util.List;
 
 @Repository
-interface CodeRepository extends JpaRepository<Code, Long> {
+public interface CodeRepository extends JpaRepository<Code, Long> {
     List<Code> findFirst10ByOrderByLocalDateTimeDesc();
 }

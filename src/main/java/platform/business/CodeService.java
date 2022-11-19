@@ -1,16 +1,21 @@
 package platform.business;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import platform.persistence.CodeRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CodeService {
 
-    @Autowired
-    private CodeRepository codeRepository;
+    private final CodeRepository codeRepository;
+
+    public CodeService(CodeRepository codeRepository) {
+        this.codeRepository = codeRepository;
+    }
 
     public long addCode(Code newCode) {
         Code code = codeRepository.save(newCode);
