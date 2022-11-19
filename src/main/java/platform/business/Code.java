@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -30,7 +32,7 @@ public class Code {
     private long time;
 
     @JsonIgnore
-    private Instant instant;
+    private LocalDateTime localDateTime;
 
     @JsonIgnore
     private boolean restricted;
@@ -38,7 +40,7 @@ public class Code {
     @JsonCreator
     public Code(String code, int views, long time) {
         this.code = code;
-        this.instant = Instant.now();
+        this.localDateTime = LocalDateTime.now();
         this.id = UUID.randomUUID().toString();
         this.views = views;
         this.time = time;
@@ -58,7 +60,7 @@ public class Code {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
                 .withLocale(Locale.getDefault())
                 .withZone(ZoneId.systemDefault());
-        return formatter.format(instant);
+        return formatter.format(localDateTime);
     }
 
     public boolean expired() {
@@ -70,8 +72,8 @@ public class Code {
     }
 
     private boolean outOfTime() {
-        long secondsPassed = Instant.now().getEpochSecond() - instant.getEpochSecond();
-        time = time - secondsPassed;
+        Duration secondsPassed = Duration.between(localDateTime, LocalDateTime.now());
+        time = time - secondsPassed.getSeconds();
         return time <= 0;
     }
 

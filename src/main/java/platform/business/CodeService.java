@@ -34,6 +34,7 @@ public class CodeService {
     public List<Code> getLatest() {
         return codeRepository.findAll().stream()
                 .filter(code -> !code.isRestricted())
+                .sorted((first, second) -> second.getDate().compareTo(first.getDate()))
                 .limit(10)
                 .toList();
     }
