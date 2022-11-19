@@ -1,15 +1,18 @@
 const form = document.querySelector("form");
 
 form.addEventListener("submit", (e) => {
-    const codeValue = e.target.elements.code.value;
+    const codeValues = e.target.elements;
     e.preventDefault();
-    const json = JSON.stringify(getCodeObject(codeValue));
+    const json = JSON.stringify(getCodeObject(codeValues));
+    console.log(codeValues);
     postJsonRequest(json);
 });
 
-function getCodeObject(value) {
+function getCodeObject(values) {
     return {
-        code: value
+        code: values.code.value,
+        views: values.views.value,
+        time: values.time.value
     }
 }
 
@@ -18,8 +21,4 @@ function postJsonRequest(json) {
     xhr.open("POST", "/api/code/new", false);
     xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
     xhr.send(json);
-
-    if (xhr.status == 200) {
-        alert("success!");
-    }
 }
