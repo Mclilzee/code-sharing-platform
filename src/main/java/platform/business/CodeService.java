@@ -1,7 +1,6 @@
 package platform.business;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ public class CodeService {
     public List<Code> getLatest(int limit) {
         return codes.stream()
                 .limit(limit)
-                .sorted((first, second) -> second.getLocalDate().compareTo(first.getLocalDate()))
+                .sorted((first, second) -> second.getLocalDateTime().compareTo(first.getLocalDateTime()))
                 .toList();
 
     }

@@ -12,26 +12,26 @@ public class Code {
 
     private String code;
 
-    private LocalDateTime date;
+    private LocalDateTime localDateTime;
 
     @JsonCreator
     public Code(String code) {
         this.code = code;
-        this.date = LocalDateTime.now();
+        this.localDateTime = LocalDateTime.now();
     }
 
     public String getDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        return this.date.format(formatter);
+        return this.localDateTime.format(formatter);
     }
 
     @JsonIgnore
-    public LocalDateTime getLocalDate() {
-        return this.date;
+    public LocalDateTime getLocalDateTime() {
+        return this.localDateTime;
     }
 
     public void setCode(String code) {
         this.code = code;
-        this.date = LocalDateTime.now();
+        this.localDateTime = LocalDateTime.now();
     }
 }
