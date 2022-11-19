@@ -1,6 +1,7 @@
 package platform.presentation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -49,6 +50,12 @@ public class CodeController {
     @GetMapping("/api/code/latest")
     public List<Code> getLastTenCodeSnippets() {
         return codeService.getLatest(10);
+    }
+
+    @GetMapping("/code/latest")
+    public String getLatestAsHtml(Model model) {
+        model.addAttribute("codes", codeService.getLatest(10));
+        return "latest-snippets";
     }
 
 }
