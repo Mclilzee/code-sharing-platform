@@ -64,7 +64,8 @@ public class Code {
     }
 
     public long getTime() {
-        return time - getSecondsPassed();
+        long secondsRemaining = time - getSecondsPassed();
+        return secondsRemaining > 0 ? secondsRemaining : 0;
     }
 
     public boolean expired() {
