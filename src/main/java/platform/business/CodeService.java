@@ -31,7 +31,7 @@ public class CodeService {
         return code.get();
     }
 
-    public List<Code> getLatest(int limit) {
+    public List<Code> getLatest() {
         return codeRepository.findFirst10ByOrderByLocalDateTimeDesc();
     }
 }

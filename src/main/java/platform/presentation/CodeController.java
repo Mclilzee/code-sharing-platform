@@ -52,12 +52,12 @@ public class CodeController {
     @ResponseBody
     @GetMapping("/api/code/latest")
     public List<Code> getLastTenCodeSnippets() {
-        return codeService.getLatest(10);
+        return codeService.getLatest();
     }
 
     @GetMapping("/code/latest")
     public String getLatestAsHtml(Model model) {
-        model.addAttribute("codes", codeService.getLatest(10));
+        model.addAttribute("codes", codeService.getLatest());
         return "latest-snippets";
     }
 
