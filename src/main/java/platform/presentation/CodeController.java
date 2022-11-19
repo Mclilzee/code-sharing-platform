@@ -8,13 +8,12 @@ import platform.business.Code;
 import platform.business.CodeService;
 
 import javax.validation.Valid;
-import java.util.Map;
 
 @Controller
 public class CodeController {
 
     @Autowired
-    CodeService codeService;
+    private CodeService codeService;
 
     @ResponseBody
     @PostMapping("/api/code/new")
@@ -35,9 +34,9 @@ public class CodeController {
     }
 
     @ResponseBody
-    @GetMapping("/api/code")
-    public Code getCodeInformation() {
-        return codeInformation;
+    @GetMapping("/api/code/{index}")
+    public Code getCodeInformation(@PathVariable int index) {
+        return codeService.getCode(index);
     }
 
 }
