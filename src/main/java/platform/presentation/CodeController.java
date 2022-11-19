@@ -16,8 +16,7 @@ import java.util.Map;
 @Controller
 public class CodeController {
 
-    @Autowired
-    private CodeService codeService;
+    private final CodeService codeService = new CodeService();
 
     @ResponseBody
     @PostMapping("/api/code/new")

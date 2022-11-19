@@ -7,7 +7,6 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
 public class CodeService {
 
     public List<Code> codes = new ArrayList<>();
