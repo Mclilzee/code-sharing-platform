@@ -12,8 +12,9 @@ public class CodeService {
 
     public List<Code> codes = new ArrayList<>();
 
-    public void addCode(Code code) {
+    public int addCode(Code code) {
         this.codes.add(code);
+        return this.codes.size();
     }
 
     public Code getCode(int index) {
@@ -22,5 +23,13 @@ public class CodeService {
         } catch (IndexOutOfBoundsException ex) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    public List<Code> getLatest(int limit) {
+        return codes.stream()
+                .limit(limit)
+                .sorted((first, second) -> second.getLocalDate().compareTo(first.getLocalDate()))
+                .toList();
+
     }
 }
