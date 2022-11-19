@@ -21,7 +21,7 @@ public class CodeController {
     @ResponseBody
     @PostMapping("/api/code/new")
     public Map<String, String> addCodeInformation(@RequestBody @Valid Code code) {
-       int id = codeService.addCode(code);
+       long id = codeService.addCode(code);
        Map<String, String> response = new HashMap<>();
        response.put("id", String.valueOf(id));
        return response;
