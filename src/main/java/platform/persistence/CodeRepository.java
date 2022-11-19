@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface CodeRepository extends JpaRepository<Code, String> {
-    List<Code> findFirst10ByRestrictedIsFalseOrderByLocalDateTimeDesc();
+    List<Code> findFirst10ByTimeRestrictedIsFalseAndViewsRestrictedIsFalseOrderByLocalDateTimeDesc();
 }

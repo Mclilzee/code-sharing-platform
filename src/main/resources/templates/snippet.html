@@ -10,7 +10,9 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <span id="load_date" th:text=${code.getDate()}></span>
-        <pre id="code_snippet"><code th:text=${code.getCode()}></code></pre>
+        <p><span id="load_date" th:text="${code.getDate()}"></span></p>
+        <p th:if="${code.isViewsRestricted()}"><span id="views_restriction" th:text="${code.getViews()}"></span> more views allowed</p>
+        <p th:if="${code.isTimeRestricted()}">The code will be available for <span id="time_restriction" th:text="${code.getTime()}"></span> seconds</p>
+        <pre id="code_snippet"><code th:text="${code.getCode()}"></code></pre>
     </body>
 </html>

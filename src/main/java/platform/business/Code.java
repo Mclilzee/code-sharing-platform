@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -35,7 +34,10 @@ public class Code {
     private LocalDateTime localDateTime;
 
     @JsonIgnore
-    private boolean restricted;
+    private boolean viewsRestricted;
+
+    @JsonIgnore
+    private boolean timeRestricted;
 
     @JsonCreator
     public Code(String code, int views, long time) {
@@ -45,15 +47,19 @@ public class Code {
         this.views = views;
         this.time = time;
 
-        if (views < 0) {
+        if (views <= 0) {
             this.views = 0;
+            this.viewsRestricted = false;
+        } else {
+            this.viewsRestricted = true;
         }
 
-        if (time < 0) {
+        if (time <= 0) {
             this.time = 0;
+            this.timeRestricted = false;
+        } else {
+            this.timeRestricted = true;
         }
-
-        restricted = views > 0 || time > 0;
     }
 
     public String getDate() {
@@ -69,7 +75,7 @@ public class Code {
     }
 
     public boolean expired() {
-        if (!restricted) {
+        if (!isRestricted()) {
             return false;
         }
 
@@ -77,10 +83,18 @@ public class Code {
     }
 
     private boolean outOfTime() {
+        if (!timeRestricted) {
+            return false;
+        }
+
         return getSecondsPassed() > time;
     }
 
     private boolean outOfViews() {
+        if (!viewsRestricted) {
+            return false;
+        }
+
         boolean outOfViews = views <= 0;
         views--;
         return outOfViews;
@@ -89,5 +103,10 @@ public class Code {
     private long getSecondsPassed() {
         Duration secondsPassed = Duration.between(localDateTime, LocalDateTime.now());
         return secondsPassed.getSeconds();
+    }
+
+    @JsonIgnore
+    public boolean isRestricted() {
+        return this.timeRestricted || this.viewsRestricted;
     }
 }

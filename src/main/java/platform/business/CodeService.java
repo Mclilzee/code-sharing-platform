@@ -32,6 +32,6 @@ public class CodeService {
     }
 
     public List<Code> getLatest() {
-        return codeRepository.findFirst10ByRestrictedIsFalseOrderByLocalDateTimeDesc();
+        return codeRepository.findFirst10ByTimeRestrictedIsFalseAndViewsRestrictedIsFalseOrderByLocalDateTimeDesc();
     }
 }
