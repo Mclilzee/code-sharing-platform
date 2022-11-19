@@ -24,11 +24,11 @@ public class CodeService {
 
     public Code getCode(String id) {
         Optional<Code> code = codeRepository.findById(id);
-        if (code.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        if (code.isEmpty() || code.get().expired()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
-        return code.get();
+        return codeRepository.save(code.get());
     }
 
     public List<Code> getLatest() {

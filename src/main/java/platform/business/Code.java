@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.UUID;
 
 @Getter
@@ -38,20 +40,24 @@ public class Code {
         this.code = code;
         this.instant = Instant.now();
         this.id = UUID.randomUUID().toString();
+        this.views = views;
+        this.time = time;
 
-        if (views <= 0 && time <= 0) {
-            views = 0;
-            time = 0;
-            restricted = false;
-        } else {
-            this.views = views;
-            this.time = time;
-            restricted = true;
+        if (views < 0) {
+            this.views = 0;
         }
+
+        if (time < 0) {
+            this.time = 0;
+        }
+
+        restricted = views > 0 || time > 0;
     }
 
     public String getDate() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")
+                .withLocale(Locale.getDefault())
+                .withZone(ZoneId.systemDefault());
         return formatter.format(instant);
     }
 

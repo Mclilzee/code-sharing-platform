@@ -29,9 +29,9 @@ public class CodeController {
        return response;
     }
 
-    @GetMapping("/code/{index}")
-    public String getHtml(Model model, @PathVariable String index) {
-        Code code = codeService.getCode(index);
+    @GetMapping("/code/{id}")
+    public String getHtml(Model model, @PathVariable String id) {
+        Code code = codeService.getCode(id);
         model.addAttribute("code", code);
         return "snippet";
     }
@@ -42,9 +42,9 @@ public class CodeController {
     }
 
     @ResponseBody
-    @GetMapping("/api/code/{index}")
-    public Code getCodeInformation(@PathVariable String index) {
-        return codeService.getCode(index);
+    @GetMapping("/api/code/{id}")
+    public Code getCodeInformation(@PathVariable String id) {
+        return codeService.getCode(id);
     }
 
     @ResponseBody
