@@ -7,14 +7,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @Getter
-public class CodeInformation {
+public class Code {
 
-    private final String code;
+    private String code;
 
-    private final LocalDateTime date;
+    private LocalDateTime date;
 
     @JsonCreator
-    public CodeInformation(String code) {
+    public Code(String code) {
         this.code = code;
         this.date = LocalDateTime.now();
     }
@@ -22,5 +22,10 @@ public class CodeInformation {
     public String getDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         return this.date.format(formatter);
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+        this.date = LocalDateTime.now();
     }
 }
