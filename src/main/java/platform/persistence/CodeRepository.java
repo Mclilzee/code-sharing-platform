@@ -7,6 +7,6 @@ import platform.business.Code;
 import java.util.List;
 
 @Repository
-public interface CodeRepository extends JpaRepository<Code, Long> {
-    List<Code> findFirst10ByOrderByLocalDateTimeDesc();
+public interface CodeRepository extends JpaRepository<Code, String> {
+    List<Code> findFirst10ByOrderByInstantDesc();
 }

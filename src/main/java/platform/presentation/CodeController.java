@@ -1,7 +1,5 @@
 package platform.presentation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -25,14 +23,14 @@ public class CodeController {
     @ResponseBody
     @PostMapping("/api/code/new")
     public Map<String, String> addCodeInformation(@RequestBody @Valid Code code) {
-       long id = codeService.addCode(code);
+       String id = codeService.addCode(code);
        Map<String, String> response = new HashMap<>();
-       response.put("id", String.valueOf(id));
+       response.put("id", id);
        return response;
     }
 
     @GetMapping("/code/{index}")
-    public String getHtml(Model model, @PathVariable int index) {
+    public String getHtml(Model model, @PathVariable String index) {
         Code code = codeService.getCode(index);
         model.addAttribute("code", code);
         return "snippet";
@@ -45,7 +43,7 @@ public class CodeController {
 
     @ResponseBody
     @GetMapping("/api/code/{index}")
-    public Code getCodeInformation(@PathVariable int index) {
+    public Code getCodeInformation(@PathVariable String index) {
         return codeService.getCode(index);
     }
 

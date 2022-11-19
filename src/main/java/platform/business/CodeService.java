@@ -17,12 +17,12 @@ public class CodeService {
         this.codeRepository = codeRepository;
     }
 
-    public long addCode(Code newCode) {
+    public String addCode(Code newCode) {
         Code code = codeRepository.save(newCode);
         return code.getId();
     }
 
-    public Code getCode(long id) {
+    public Code getCode(String id) {
         Optional<Code> code = codeRepository.findById(id);
         if (code.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
@@ -32,6 +32,9 @@ public class CodeService {
     }
 
     public List<Code> getLatest() {
-        return codeRepository.findFirst10ByOrderByLocalDateTimeDesc();
+        return codeRepository.findAll().stream()
+                .filter(code -> !code.isRestricted())
+                .limit(10)
+                .toList();
     }
 }
