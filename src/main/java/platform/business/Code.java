@@ -63,6 +63,10 @@ public class Code {
         return formatter.format(localDateTime);
     }
 
+    public long getTime() {
+        return time - getSecondsPassed();
+    }
+
     public boolean expired() {
         if (!restricted) {
             return false;
@@ -72,9 +76,7 @@ public class Code {
     }
 
     private boolean outOfTime() {
-        Duration secondsPassed = Duration.between(localDateTime, LocalDateTime.now());
-        time = time - secondsPassed.getSeconds();
-        return time <= 0;
+        return getSecondsPassed() > time;
     }
 
     private boolean outOfViews() {
@@ -83,7 +85,8 @@ public class Code {
         return outOfViews;
     }
 
-    public boolean notRestricted() {
-        return !restricted;
+    private long getSecondsPassed() {
+        Duration secondsPassed = Duration.between(localDateTime, LocalDateTime.now());
+        return secondsPassed.getSeconds();
     }
 }
