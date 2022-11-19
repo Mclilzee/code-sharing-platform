@@ -25,8 +25,8 @@ public class CodeService {
 
     public List<Code> getLatest(int limit) {
         return codes.stream()
-                .limit(limit)
                 .sorted((first, second) -> second.getLocalDateTime().compareTo(first.getLocalDateTime()))
+                .limit(limit)
                 .toList();
 
     }
