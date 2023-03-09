@@ -27,8 +27,24 @@ The server end point to send http requests on to use the post code forum, and UR
 Note: For API end points its explained further bellow this topic.
 
 - `/code/new` is used to post a code to the server, specifying a view or 
-- `/code/{id}` is used to retrieve a code by providing an ID
+- `/code/{id}` is used to retrieve a code by providing an ID replace `{id}` with a proper id as parameter.
 - `/code/latest` will retrieve the latest 10 code snippets that have been posted, the code snippets have to be public and have no views, or timer to appear.
 
 # Controller API Service End Points
+
+the API end points is very similar to the above except we add API keyword to the front of it.
+
+- `POST` endpoint `api/code/new` is used to post new code snippets, the json format is as follow
+```json
+{
+    "code": "public void static main(String[] args) {}"
+    "views": 3,
+    "time": 2,
+}
+```
+view and time is optional as explained in the description above, can be ommited.
+- GET `api/code/{id}` is used to get json body that contains the details of the code. further details in the examples bellow.
+- GET `api/code/latest` will retrieve a list of last 10 public snippet jsons.
+
+# Example - Posting Code Using Service
 
