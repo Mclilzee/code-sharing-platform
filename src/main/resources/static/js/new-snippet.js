@@ -26,5 +26,5 @@ function postJsonRequest(json) {
     })
   })
   .then(response => response.json())
-  .then(json => alert(ID: json.id))
+  .then(json => alert("ID: " + json.id))
 }
