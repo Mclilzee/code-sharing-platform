@@ -17,9 +17,14 @@ function getCodeObject(values) {
 }
 
 function postJsonRequest(json) {
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", "/api/code/new", false);
-    xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-    xhr.send(json);
-  console.log(xhr.getCodeObject())
+    fetch("/api/code/new", {
+    method: 'post',
+    body: json,
+    mode: 'cors',
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  })
+  .then(response => response.json())
+  .then(json => alert(ID: json.id))
 }
