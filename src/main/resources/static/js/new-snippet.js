@@ -21,4 +21,5 @@ function postJsonRequest(json) {
     xhr.open("POST", "/api/code/new", false);
     xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
     xhr.send(json);
+  console.log(xhr.getCodeObject())
 }
