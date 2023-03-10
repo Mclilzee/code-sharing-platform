@@ -8,7 +8,7 @@ The other mode is using it as is, with minimalistic Web Forum, and Web service t
 
 Posting a code have two optional parameters to be passed, a timer and views count. Sending requests with no view counts or 0 view counts will make the code public, and will be able to be accessed by anyone with no restrictions and no time to be removed.
 
-Further more using public does will appear in latest code snippets in the API.
+Further more using public does will appear in the latest code snippets in the API.
 
 giving code specific view count, or timer will make code not be shown in the public lists, and to share it you will have to provide the code's unique ID.
 # Requirement
@@ -24,6 +24,7 @@ To shut down the server use actuator by sending POST request to `https://localho
 
 # Controller Service End Points
 
+Default host is `localhost:8080`
 The server end point to send http requests on to use the post code forum, and URL for retrieval.
 Note: For API end points its explained further bellow this topic.
 
@@ -33,13 +34,14 @@ Note: For API end points its explained further bellow this topic.
 
 # Controller API Service End Points
 
+Default host is `localhost:8080`
 the API end points is very similar to the above except we add API keyword to the front of it.
 
-- `POST` endpoint `api/code/new` is used to post new code snippets, the json format is as follow
+- `POST` endpoint `api/code/new` is used to post new code snippets, the json format is as follows
 ```json
 {
-    "code": "public void static main(String[] args) {}"
-    "views": 3,
+    "code": "public void static main(String[] args) {}",
+    "view": 3,
     "time": 2,
 }
 ```
@@ -47,5 +49,15 @@ view and time is optional as explained in the description above, can be ommited.
 - GET `api/code/{id}` is used to get json body that contains the details of the code. further details in the examples bellow.
 - GET `api/code/latest` will retrieve a list of last 10 public snippet jsons.
 
-# Example - Posting Code Using Service
+# Example - Posting Code
+- Posting Code using Forum <img src="./examples/posting-code-service.png" alt="forum to post code snippet" />
+- Posting Code API <img src="./posting-code-api.png" alt="Post request via postman" />
+- Posting Public Code <img src="./posting-code-public-api" alt="Post request via postman, no view or time" />
 
+# Example - Getting Code With ID
+- Using Service <img src="./examples/getting-code-with-id.png alt="webpage code view with specific id" />
+- Using API <img src="./examples/getting-code-api.png" alt="Retrieve code json" />
+
+# Example - Getting The Latest Public Codes
+- Using Service <img src="./examples/getting-latest-code-service.png alt="webpage list of codes" />
+- Using API <img src="./examples/getting-latest-codes-api.png alt="Json of list of code objects" />
