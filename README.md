@@ -50,6 +50,7 @@ view and time is optional as explained in the description above, can be omitted.
 - GET `api/code/{id}` is used to get json body that contains the details of the code. further details in the examples bellow.
 - GET `api/code/latest` will retrieve a list of last 10 public snippet json.
 
+HTTP Requests are made using <a href="https://www.postman.com/">Postman</a> And <a href="https://www.mozilla.org/en-US/firefox/new/">Mozilla Firefox</a>
 # Example - Posting Code
 - Posting Code using Forum <img src="./examples/posting-code-service.png" alt="forum to post code snippet" />
 - Posting Code API <img src="./examples/posting-code-api.png" alt="Post request via postman" />
