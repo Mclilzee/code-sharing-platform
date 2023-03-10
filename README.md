@@ -5,7 +5,7 @@ The code sharing platform has two modes, an API and a Service. Both can be used,
 while relying on the API to provide the data.
 
 The platform uses database to store and process data, If the server was shutdown the data persists.
-The other mode is using it as is, with minimalistic Web Forum, and Web service that will fetch a ready made HTML that is generated on the server side and sent to the user browser to render.
+The other mode is using it as is, with minimalistic Web Forum, and Web service that will fetch a ready-made HTML that is generated on the server side and sent to the user browser to render.
 
 Posting a code have two optional parameters to be passed, a timer and views count. Sending requests with no view counts or 0 view counts will make the code public, and will be able to be accessed by anyone with no restrictions and no time to be removed.
 
@@ -43,12 +43,12 @@ the API end points is very similar to the above except we add API keyword to the
 {
     "code": "public void static main(String[] args) {}",
     "view": 3,
-    "time": 2,
+    "time": 2
 }
 ```
-view and time is optional as explained in the description above, can be ommited.
+view and time is optional as explained in the description above, can be omitted.
 - GET `api/code/{id}` is used to get json body that contains the details of the code. further details in the examples bellow.
-- GET `api/code/latest` will retrieve a list of last 10 public snippet jsons.
+- GET `api/code/latest` will retrieve a list of last 10 public snippet json.
 
 # Example - Posting Code
 - Posting Code using Forum <img src="./examples/posting-code-service.png" alt="forum to post code snippet" />
