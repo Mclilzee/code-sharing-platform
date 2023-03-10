@@ -17,9 +17,10 @@ giving code specific view count, or timer will make code not be shown in the pub
 # Build - Run Project
 - Clone repository and navigate into repo's directory
 - Run project with `$ ./gradlew bootRun`
+- Server will be running on port `https://localhost:8080/`
 
 # Stopping the server
-To shutdown the server use actuator by calling `https://8080/actuator/shutdown`
+To shut down the server use actuator by sending POST request to `https://localhost:8080/actuator/shutdown`
 
 # Controller Service End Points
 
