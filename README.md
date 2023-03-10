@@ -51,8 +51,8 @@ view and time is optional as explained in the description above, can be ommited.
 
 # Example - Posting Code
 - Posting Code using Forum <img src="./examples/posting-code-service.png" alt="forum to post code snippet" />
-- Posting Code API <img src="./posting-code-api.png" alt="Post request via postman" />
-- Posting Public Code <img src="./posting-code-public-api" alt="Post request via postman, no view or time" />
+- Posting Code API <img src="./examples/posting-code-api.png" alt="Post request via postman" />
+- Posting Public Code <img src="./examples/posting-code-public-api" alt="Post request via postman, no view or time" />
 
 # Example - Getting Code With ID
 - Using Service <img src="./examples/getting-code-with-id.png alt="webpage code view with specific id" />
