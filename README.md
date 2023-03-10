@@ -4,6 +4,7 @@ A Code Sharing Platform API / Service can be used to share code with all users.
 The code sharing platform has two modes, an API and a Service. Both can be used, an API is used with HTML, JavaScript, React etc.. to build the front-end with,
 while relying on the API to provide the data.
 
+The platform uses database to store and process data, If the server was shutdown the data persists.
 The other mode is using it as is, with minimalistic Web Forum, and Web service that will fetch a ready made HTML that is generated on the server side and sent to the user browser to render.
 
 Posting a code have two optional parameters to be passed, a timer and views count. Sending requests with no view counts or 0 view counts will make the code public, and will be able to be accessed by anyone with no restrictions and no time to be removed.
