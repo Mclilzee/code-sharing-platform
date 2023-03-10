@@ -55,9 +55,9 @@ view and time is optional as explained in the description above, can be ommited.
 - Posting Public Code <img src="./examples/posting-code-public-api" alt="Post request via postman, no view or time" />
 
 # Example - Getting Code With ID
-- Using Service <img src="./examples/getting-code-with-id.png alt="webpage code view with specific id" />
+- Using Service <img src="./examples/getting-code-with-id.png" alt="webpage code view with specific id" />
 - Using API <img src="./examples/getting-code-api.png" alt="Retrieve code json" />
 
 # Example - Getting The Latest Public Codes
-- Using Service <img src="./examples/getting-latest-code-service.png alt="webpage list of codes" />
-- Using API <img src="./examples/getting-latest-codes-api.png alt="Json of list of code objects" />
+- Using Service <img src="./examples/getting-latest-code-service.png" alt="webpage list of codes" />
+- Using API <img src="./examples/getting-latest-codes-api.png" alt="Json of list of code objects" />
